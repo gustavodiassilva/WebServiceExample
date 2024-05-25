@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.service.WebServiceExample.api.exception.ApiRequestException;
 import com.service.WebServiceExample.api.model.User;
 import com.service.WebServiceExample.service.UserService;
 
@@ -26,6 +27,6 @@ public class UserController {
         if (user.isPresent()) {
             return (User) user.get();
         }
-        throw new IllegalStateException("User not found");
+        throw new ApiRequestException("User not found");
     }
 }
